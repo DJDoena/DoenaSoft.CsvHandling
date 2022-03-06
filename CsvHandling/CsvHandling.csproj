@@ -19,12 +19,12 @@
     <PackageIconUrl />
     <RepositoryUrl>https://github.com/DJDoena/DoenaSoft.CsvHandling</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageTags>CSV;RFC 4180;RFC4180;comma-separated values;</PackageTags>
+    <PackageTags>CSV;RFC 4180;RFC4180;comma-separated-values;</PackageTags>
     <Version>1.0.0</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageReadmeFile>readme.md</PackageReadmeFile>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
-    <DocumentationFile>CsvHandling.xml</DocumentationFile>
+    <DocumentationFile>DoenaSoft.CsvHandling.xml</DocumentationFile>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <AutoGenerateBindingRedirects>True</AutoGenerateBindingRedirects>
 
