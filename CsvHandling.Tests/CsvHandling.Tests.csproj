@@ -1,61 +1,58 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup Label="Globals">
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netcoreapp2.1</TargetFramework>
+		<RuntimeFrameworkVersion>2.1.0</RuntimeFrameworkVersion>
+		<IsPackable>false</IsPackable>
+		<AssemblyName>DoenaSoft.CsvHandling.Tests</AssemblyName>
+		<RootNamespace>DoenaSoft.CsvHandling.Tests</RootNamespace>
+		<FileVersion>1.0.0.0</FileVersion>
+	</PropertyGroup>
 
-  <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
-    <RuntimeFrameworkVersion>2.1.0</RuntimeFrameworkVersion>
-    <IsPackable>false</IsPackable>
-    <AssemblyName>DoenaSoft.CsvHandling.Tests</AssemblyName>
-    <RootNamespace>DoenaSoft.CsvHandling.Tests</RootNamespace>
-    <FileVersion>1.0.0.0</FileVersion>
-  </PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1" />
+		<PackageReference Include="MSTest.TestAdapter" Version="2.1.2" />
+		<PackageReference Include="MSTest.TestFramework" Version="2.1.2" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1" />
-    <PackageReference Include="MSTest.TestAdapter" Version="2.1.2" />
-    <PackageReference Include="MSTest.TestFramework" Version="2.1.2" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\CsvHandling\CsvHandling.csproj" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\CsvHandling\CsvHandling.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="EdgeCaseQuotedMultiline.csv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="EdgeCaseTextOutsideQuote.csv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="EdgeCaseUnclosedQuote.csv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="EdgeCaseUnquotedSpace.csv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="EmptyQuotedCell.csv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="EmptyCell.csv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="EdgeCaseSpacedQuote.csv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="EdgeCaseMaskedQuote.csv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="StraightForward.csv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="MixedBag.csv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="MixedBagWithEmptyEndLine.csv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
+	<ItemGroup>
+		<None Update="EdgeCaseQuotedMultiline.csv">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="EdgeCaseTextOutsideQuote.csv">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="EdgeCaseUnclosedQuote.csv">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="EdgeCaseUnquotedSpace.csv">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="EmptyQuotedCell.csv">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="EmptyCell.csv">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="EdgeCaseSpacedQuote.csv">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="EdgeCaseMaskedQuote.csv">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="StraightForward.csv">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="MixedBag.csv">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="MixedBagWithEmptyEndLine.csv">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
 
 </Project>
