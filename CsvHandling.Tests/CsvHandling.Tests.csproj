@@ -7,8 +7,8 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <RuntimeFrameworkVersion>2.1.0</RuntimeFrameworkVersion>
     <IsPackable>false</IsPackable>
-    <AssemblyName>MES.CsvHandling.Tests</AssemblyName>
-    <RootNamespace>BASF.MES.Framework.Common.CsvHandling.Tests</RootNamespace>
+    <AssemblyName>DoenaSoft.CsvHandling.Tests</AssemblyName>
+    <RootNamespace>DoenaSoft.CsvHandling.Tests</RootNamespace>
     <FileVersion>1.0.0.0</FileVersion>
   </PropertyGroup>
 
