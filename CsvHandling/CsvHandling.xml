@@ -1,0 +1,426 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DoenaSoft.CsvHandling</name>
+    </assembly>
+    <members>
+        <member name="T:DoenaSoft.CsvHandling.CsvHelper">
+            <summary>
+            Helper functions to read/write/create sheets
+            </summary>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.CsvHelper.Read(System.String,System.Boolean,System.Char,System.Text.Encoding)">
+            <summary>
+            Reads a CVS file and returns a sheet
+            </summary>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.CsvHelper.Write(System.String,DoenaSoft.CsvHandling.ICsvSheet,System.Char,System.Text.Encoding)">
+            <summary>
+            Writes a sheet to a CSV file
+            </summary>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.CsvHelper.CreateSheet(System.Int32,System.Int32)">
+            <summary>
+            Creates a sheet in the given dimensions
+            </summary>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.CsvHelper.CreateSheet(System.Collections.Generic.IEnumerable{System.String},System.Int32)">
+            <summary>
+            Creates a sheet with named headers
+            </summary>
+        </member>
+        <member name="T:DoenaSoft.CsvHandling.CsvReader">
+            <summary>
+            Reads a CVS file and returns a sheet
+            </summary>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.CsvReader.Read(System.String,System.Boolean,System.Char,System.Text.Encoding)">
+            <summary>
+            Reads a CVS file and returns a sheet
+            </summary>
+        </member>
+        <member name="T:DoenaSoft.CsvHandling.CsvSheet">
+            <summary>
+            Respresents a comma-separated spreadsheet
+            </summary>
+            <remarks>
+            When working with sheets that have header rows, each header name must be unique for identification purposes
+            </remarks>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.CsvSheet.#ctor(System.Boolean)">
+            <summary />
+        </member>
+        <member name="P:DoenaSoft.CsvHandling.CsvSheet.ColumnCount">
+            <summary>
+            Returns the number of columns the sheet has
+            </summary>
+        </member>
+        <member name="P:DoenaSoft.CsvHandling.CsvSheet.RowCount">
+            <summary>
+            Returns the number of rows the sheet has
+            </summary>
+        </member>
+        <member name="P:DoenaSoft.CsvHandling.CsvSheet.HasHeaderRow">
+            <summary>
+            Whether or not the sheet has named headers
+            </summary>
+        </member>
+        <member name="P:DoenaSoft.CsvHandling.CsvSheet.Item(System.Int32,System.Int32)">
+            <summary>
+            Access a single cell
+            </summary>
+        </member>
+        <member name="P:DoenaSoft.CsvHandling.CsvSheet.Item(System.String,System.Int32)">
+            <summary>
+            Access a single cell
+            </summary>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.CsvSheet.AddColumn">
+            <summary>
+            Adds a column
+            </summary>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.CsvSheet.AddColumn(System.String)">
+            <summary>
+            Adds a named column
+            </summary>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.CsvSheet.InsertColumn(System.Int32)">
+            <summary>
+            Inserts a column at the given index
+            </summary>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.CsvSheet.InsertColumn(System.Int32,System.String)">
+            <summary>
+            Inserts a named column at the given index
+            </summary>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.CsvSheet.GetColumnNames">
+            <summary>
+            Returns the named columns
+            </summary>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.CsvSheet.AddHeaderRow(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Adds the header row with named columns
+            </summary>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.CsvSheet.AddRow">
+            <summary>
+            Adds a row
+            </summary>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.CsvSheet.AddRow(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Adds a row
+            </summary>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.CsvSheet.AddRow(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Adds a row
+            </summary>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.CsvSheet.InsertRow(System.Int32)">
+            <summary>
+            Inserts a row at the given index
+            </summary>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.CsvSheet.GetSheet">
+            <summary>
+            Returns the sheet in a two-dimensional array
+            </summary>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.CsvSheet.GetFormattedSheet(System.Char)">
+            <summary>
+            Returns the sheet in the final format
+            </summary>
+            <remarks>
+            If a cell contains the " character, a newline character or the delimiter character, the content will be enclosed by " characters.
+            </remarks>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.CsvSheet.GetFormattedHeaderRow(System.Char)">
+            <summary>
+            Returns the header row in the final format
+            </summary>
+            <remarks>
+            If a cell contains the " character, a newline character or the delimiter character, the content will be enclosed by " characters.
+            </remarks>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.CsvSheet.GetFormattedRow(System.Int32,System.Char)">
+            <summary>
+            Returns the row in the final format
+            </summary>
+            <remarks>
+            If a cell contains the " character, a newline character or the delimiter character, the content will be enclosed by " characters.
+            </remarks>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.CsvSheet.GetFormattedCell(System.Int32,System.Int32,System.Char)">
+            <summary>
+            Returns the cell content in the final format
+            </summary>
+            <remarks>
+            If the cell contains the " character, a newline character or the delimiter character, the content will be enclosed by " characters.
+            </remarks>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.CsvSheet.GetFormattedCell(System.String,System.Int32,System.Char)">
+            <summary>
+            Returns the cell content in the final format
+            </summary>
+            <remarks>
+            If the cell contains the " character, a newline character or the delimiter character, the content will be enclosed by " characters.
+            </remarks>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.CsvSheet.RenameColumn(System.String,System.String)">
+            <summary>
+            Renames a named column
+            </summary>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.CsvSheet.RemoveColumn(System.Int32)">
+            <summary>
+            Removes the column at the given index
+            </summary>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.CsvSheet.RemoveColumn(System.String)">
+            <summary>
+            Removes the column with the given name
+            </summary>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.CsvSheet.RemoveRow(System.Int32)">
+            <summary>
+            Removes the row at the given index
+            </summary>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.CsvSheet.GetRowNumber(System.Int32)">
+            <summary>
+            Returns 1-based number of a row
+            </summary>
+            <remarks>
+            If the sheet has a header row, the first data row will have the number 1.
+            </remarks>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.CsvSheet.GetColumnNumber(System.Int32)">
+            <summary>
+            Returns the Excel designation of a column index
+            </summary>
+            <example>
+            columnIndex 0:  A
+            columnIndex 1:  B
+            columnIndex 25: Z
+            columnIndex 26: AA
+            </example>
+        </member>
+        <member name="T:DoenaSoft.CsvHandling.CsvWriter">
+            <summary>
+            Writes a sheet to a CSV file
+            </summary>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.CsvWriter.Write(System.String,DoenaSoft.CsvHandling.ICsvSheet,System.Char,System.Text.Encoding)">
+            <summary>
+            Writes a sheet to a CSV file
+            </summary>
+        </member>
+        <member name="T:DoenaSoft.CsvHandling.Delimiter">
+            <summary>
+            Returns a list of valid field delimiters
+            </summary>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.Delimiter.GetValidDelimiters">
+            <summary>
+            Returns a list of valid field delimiters
+            </summary>
+        </member>
+        <member name="T:DoenaSoft.CsvHandling.ICsvReader">
+            <summary>
+            Reads a CVS file and returns a sheet
+            </summary>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.ICsvReader.Read(System.String,System.Boolean,System.Char,System.Text.Encoding)">
+            <summary>
+            Reads a CVS file and returns a sheet
+            </summary>
+        </member>
+        <member name="T:DoenaSoft.CsvHandling.ICsvSheet">
+            <summary>
+            Respresents a comma-separated spreadsheet
+            </summary>
+            <remarks>
+            When working with sheets that have header rows, each header name must be unique for identification purposes
+            </remarks>
+        </member>
+        <member name="P:DoenaSoft.CsvHandling.ICsvSheet.Item(System.Int32,System.Int32)">
+            <summary>
+            Access a single cell
+            </summary>
+        </member>
+        <member name="P:DoenaSoft.CsvHandling.ICsvSheet.Item(System.String,System.Int32)">
+            <summary>
+            Access a single cell
+            </summary>
+        </member>
+        <member name="P:DoenaSoft.CsvHandling.ICsvSheet.ColumnCount">
+            <summary>
+            Returns the number of columns the sheet has
+            </summary>
+        </member>
+        <member name="P:DoenaSoft.CsvHandling.ICsvSheet.HasHeaderRow">
+            <summary>
+            Whether or not the sheet has named headers
+            </summary>
+        </member>
+        <member name="P:DoenaSoft.CsvHandling.ICsvSheet.RowCount">
+            <summary>
+            Returns the number of rows the sheet has
+            </summary>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.ICsvSheet.AddColumn">
+            <summary>
+            Adds a column
+            </summary>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.ICsvSheet.AddColumn(System.String)">
+            <summary>
+            Adds a named column
+            </summary>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.ICsvSheet.AddHeaderRow(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Adds the header row with named columns
+            </summary>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.ICsvSheet.AddRow">
+            <summary>
+            Adds a row
+            </summary>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.ICsvSheet.AddRow(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Adds a row
+            </summary>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.ICsvSheet.AddRow(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Adds a row
+            </summary>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.ICsvSheet.GetColumnNames">
+            <summary>
+            Returns the named columns
+            </summary>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.ICsvSheet.GetColumnNumber(System.Int32)">
+            <summary>
+            Returns the Excel designation of a column index
+            </summary>
+            <example>
+            columnIndex 0:  A
+            columnIndex 1:  B
+            columnIndex 25: Z
+            columnIndex 26: AA
+            </example>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.ICsvSheet.GetFormattedCell(System.Int32,System.Int32,System.Char)">
+            <summary>
+            Returns the cell content in the final format
+            </summary>
+            <remarks>
+            If the cell contains the " character, a newline character or the delimiter character, the content will be enclosed by " characters.
+            </remarks>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.ICsvSheet.GetFormattedCell(System.String,System.Int32,System.Char)">
+            <summary>
+            Returns the cell content in the final format
+            </summary>
+            <remarks>
+            If the cell contains the " character, a newline character or the delimiter character, the content will be enclosed by " characters.
+            </remarks>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.ICsvSheet.GetFormattedHeaderRow(System.Char)">
+            <summary>
+            Returns the header row in the final format
+            </summary>
+            <remarks>
+            If a cell contains the " character, a newline character or the delimiter character, the content will be enclosed by " characters.
+            </remarks>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.ICsvSheet.GetFormattedRow(System.Int32,System.Char)">
+            <summary>
+            Returns the row in the final format
+            </summary>
+            <remarks>
+            If a cell contains the " character, a newline character or the delimiter character, the content will be enclosed by " characters.
+            </remarks>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.ICsvSheet.GetFormattedSheet(System.Char)">
+            <summary>
+            Returns the sheet in the final format
+            </summary>
+            <remarks>
+            If a cell contains the " character, a newline character or the delimiter character, the content will be enclosed by " characters.
+            </remarks>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.ICsvSheet.GetRowNumber(System.Int32)">
+            <summary>
+            Returns 1-based number of a row
+            </summary>
+            <remarks>
+            If the sheet has a header row, the first data row will have the number 1.
+            </remarks>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.ICsvSheet.GetSheet">
+            <summary>
+            Returns the sheet in a two-dimensional array
+            </summary>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.ICsvSheet.InsertColumn(System.Int32)">
+            <summary>
+            Inserts a column at the given index
+            </summary>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.ICsvSheet.InsertColumn(System.Int32,System.String)">
+            <summary>
+            Inserts a named column at the given index
+            </summary>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.ICsvSheet.InsertRow(System.Int32)">
+            <summary>
+            Inserts a row at the given index
+            </summary>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.ICsvSheet.RemoveColumn(System.Int32)">
+            <summary>
+            Removes the column at the given index
+            </summary>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.ICsvSheet.RemoveColumn(System.String)">
+            <summary>
+            Removes the column with the given name
+            </summary>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.ICsvSheet.RemoveRow(System.Int32)">
+            <summary>
+            Removes the row at the given index
+            </summary>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.ICsvSheet.RenameColumn(System.String,System.String)">
+            <summary>
+            Renames a named column
+            </summary>
+        </member>
+        <member name="T:DoenaSoft.CsvHandling.ICsvWriter">
+            <summary>
+            Writes a sheet to a CSV file
+            </summary>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.ICsvWriter.Write(System.String,DoenaSoft.CsvHandling.ICsvSheet,System.Char,System.Text.Encoding)">
+            <summary>
+            Writes a sheet to a CSV file
+            </summary>
+        </member>
+        <member name="T:DoenaSoft.CsvHandling.InvalidCsvException">
+            <summary />
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.InvalidCsvException.#ctor(System.String)">
+            <summary />
+        </member>
+    </members>
+</doc>
