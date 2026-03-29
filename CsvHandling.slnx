@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="CsvHandling.Tests/CsvHandling.Tests.csproj" />
+  <Project Path="CsvHandling/CsvHandling.csproj" />
+</Solution>

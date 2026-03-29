@@ -121,19 +121,23 @@ namespace DoenaSoft.CsvHandling.Tests
             Assert.AreEqual(" 47", sheet[2, 0]);
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(InvalidCsvException))]
-        public void EdgeCaseUnclosedQuote()
+    [TestMethod]
+    public void EdgeCaseUnclosedQuote()
+    {
+        Assert.ThrowsExactly<InvalidCsvException>(() =>
         {
             (new CsvReader()).Read("EdgeCaseUnclosedQuote.csv", false, ',', Encoding.UTF8);
-        }
+        });
+    }
 
-        [TestMethod]
-        [ExpectedException(typeof(InvalidCsvException))]
-        public void EdgeCaseTextOutsideQuote()
+    [TestMethod]
+    public void EdgeCaseTextOutsideQuote()
+    {
+        Assert.ThrowsExactly<InvalidCsvException>(() =>
         {
             (new CsvReader()).Read("EdgeCaseTextOutsideQuote.csv", false, ',', Encoding.UTF8);
-        }
+        });
+    }
 
         [TestMethod]
         public void EdgeCaseQuotedMultiline()
@@ -152,6 +156,19 @@ namespace DoenaSoft.CsvHandling.Tests
             Assert.AreEqual("4,2", sheet[1, 1]);
             Assert.AreEqual("Jane", sheet[2, 1]);
             Assert.AreEqual("Hurz", sheet[3, 1]);
+        }
+
+        [TestMethod]
+        public void EdgeCaseDelimiterAtEnd()
+        {
+            var sheet = (new CsvReader()).Read("EdgeCaseDelimiterAtEnd.csv", false, ',', Encoding.UTF8);
+
+            Assert.AreEqual(3, sheet.ColumnCount);
+            Assert.AreEqual(1, sheet.RowCount);
+
+            Assert.AreEqual("23", sheet[0, 0]);
+            Assert.AreEqual("47", sheet[1, 0]);
+            Assert.AreEqual("", sheet[2, 0]);
         }
     }
 }

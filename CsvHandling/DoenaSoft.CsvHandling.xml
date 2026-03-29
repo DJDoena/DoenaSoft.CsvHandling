@@ -9,15 +9,26 @@
             Helper functions to read/write/create sheets
             </summary>
         </member>
-        <member name="M:DoenaSoft.CsvHandling.CsvHelper.Read(System.String,System.Boolean,System.Char,System.Text.Encoding)">
+        <member name="M:DoenaSoft.CsvHandling.CsvHelper.Read(System.String,System.Boolean,System.Char,System.Text.Encoding,System.Boolean,System.Threading.CancellationToken)">
             <summary>
             Reads a CVS file and returns a sheet
             </summary>
+            <param name="fileName">The path to the CSV file to read</param>
+            <param name="hasRowHeaders">Whether the first row contains column headers</param>
+            <param name="delimiter">The delimiter character (default: comma)</param>
+            <param name="encoding">The text encoding (default: UTF-8)</param>
+            <param name="strictMode">When true, throws InvalidCsvException if rows have inconsistent column counts (default: false)</param>
+            <param name="cancellationToken">Token to monitor for cancellation requests</param>
         </member>
-        <member name="M:DoenaSoft.CsvHandling.CsvHelper.Write(System.String,DoenaSoft.CsvHandling.ICsvSheet,System.Char,System.Text.Encoding)">
+        <member name="M:DoenaSoft.CsvHandling.CsvHelper.Write(System.String,DoenaSoft.CsvHandling.ICsvSheet,System.Char,System.Text.Encoding,System.Threading.CancellationToken)">
             <summary>
             Writes a sheet to a CSV file
             </summary>
+            <param name="fileName">The path to the CSV file to write</param>
+            <param name="sheet">The sheet to write</param>
+            <param name="delimiter">The delimiter character (default: comma)</param>
+            <param name="encoding">The text encoding (default: UTF-8)</param>
+            <param name="cancellationToken">Token to monitor for cancellation requests</param>
         </member>
         <member name="M:DoenaSoft.CsvHandling.CsvHelper.CreateSheet(System.Int32,System.Int32)">
             <summary>
@@ -29,22 +40,37 @@
             Creates a sheet with named headers
             </summary>
         </member>
+        <member name="M:DoenaSoft.CsvHandling.CsvHelper.CreateRow(System.Int32)">
+            <summary>
+            Creates a row with the given number of columns, filled with empty strings
+            </summary>
+            <param name="numberOfColumns">number of columns for the row</param>
+            <returns>an empty row</returns>
+        </member>
         <member name="T:DoenaSoft.CsvHandling.CsvReader">
             <summary>
-            Reads a CVS file and returns a sheet
+            Reads a CSV file and returns a sheet
             </summary>
         </member>
-        <member name="M:DoenaSoft.CsvHandling.CsvReader.Read(System.String,System.Boolean,System.Char,System.Text.Encoding)">
+        <member name="M:DoenaSoft.CsvHandling.CsvReader.Read(System.String,System.Boolean,System.Char,System.Text.Encoding,System.Boolean,System.Threading.CancellationToken)">
             <summary>
-            Reads a CVS file and returns a sheet
+            Reads a CSV file and returns a sheet
             </summary>
+            <param name="fileName">The path to the CSV file to read</param>
+            <param name="hasRowHeaders">Whether the first row contains column headers</param>
+            <param name="delimiter">The delimiter character (default: comma)</param>
+            <param name="encoding">The text encoding (default: UTF-8)</param>
+            <param name="strictMode">When true, throws InvalidCsvException if rows have inconsistent column counts (default: false)</param>
+            <param name="cancellationToken">Token to monitor for cancellation requests</param>
         </member>
         <member name="T:DoenaSoft.CsvHandling.CsvSheet">
             <summary>
             Respresents a comma-separated spreadsheet
             </summary>
             <remarks>
-            When working with sheets that have header rows, each header name must be unique for identification purposes
+            <para>When working with sheets that have header rows, each header name must be unique for identification purposes.</para>
+            <para>Rows with inconsistent column counts are automatically normalized: shorter rows are padded with empty cells, 
+            and longer rows automatically extend the sheet's column count.</para>
             </remarks>
         </member>
         <member name="M:DoenaSoft.CsvHandling.CsvSheet.#ctor(System.Boolean)">
@@ -214,10 +240,15 @@
             Writes a sheet to a CSV file
             </summary>
         </member>
-        <member name="M:DoenaSoft.CsvHandling.CsvWriter.Write(System.String,DoenaSoft.CsvHandling.ICsvSheet,System.Char,System.Text.Encoding)">
+        <member name="M:DoenaSoft.CsvHandling.CsvWriter.Write(System.String,DoenaSoft.CsvHandling.ICsvSheet,System.Char,System.Text.Encoding,System.Threading.CancellationToken)">
             <summary>
             Writes a sheet to a CSV file
             </summary>
+            <param name="fileName">The path to the CSV file to write</param>
+            <param name="sheet">The sheet to write</param>
+            <param name="delimiter">The delimiter character (default: comma)</param>
+            <param name="encoding">The text encoding (default: UTF-8)</param>
+            <param name="cancellationToken">Token to monitor for cancellation requests</param>
         </member>
         <member name="T:DoenaSoft.CsvHandling.Delimiter">
             <summary>
@@ -229,15 +260,26 @@
             Returns a list of valid field delimiters
             </summary>
         </member>
-        <member name="T:DoenaSoft.CsvHandling.ICsvReader">
+        <member name="M:DoenaSoft.CsvHandling.Delimiter.IsValidDelimiter(System.Char)">
             <summary>
-            Reads a CVS file and returns a sheet
+            Checks if a character is a valid delimiter
             </summary>
         </member>
-        <member name="M:DoenaSoft.CsvHandling.ICsvReader.Read(System.String,System.Boolean,System.Char,System.Text.Encoding)">
+        <member name="T:DoenaSoft.CsvHandling.ICsvReader">
             <summary>
-            Reads a CVS file and returns a sheet
+            Reads a CSV file and returns a sheet
             </summary>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.ICsvReader.Read(System.String,System.Boolean,System.Char,System.Text.Encoding,System.Boolean,System.Threading.CancellationToken)">
+            <summary>
+            Reads a CSV file and returns a sheet
+            </summary>
+            <param name="fileName">The path to the CSV file to read</param>
+            <param name="hasRowHeaders">Whether the first row contains column headers</param>
+            <param name="delimiter">The delimiter character (default: comma)</param>
+            <param name="encoding">The text encoding (default: UTF-8)</param>
+            <param name="strictMode">When true, throws InvalidCsvException if rows have inconsistent column counts (default: false)</param>
+            <param name="cancellationToken">Token to monitor for cancellation requests</param>
         </member>
         <member name="T:DoenaSoft.CsvHandling.ICsvSheet">
             <summary>
@@ -411,16 +453,60 @@
             Writes a sheet to a CSV file
             </summary>
         </member>
-        <member name="M:DoenaSoft.CsvHandling.ICsvWriter.Write(System.String,DoenaSoft.CsvHandling.ICsvSheet,System.Char,System.Text.Encoding)">
+        <member name="M:DoenaSoft.CsvHandling.ICsvWriter.Write(System.String,DoenaSoft.CsvHandling.ICsvSheet,System.Char,System.Text.Encoding,System.Threading.CancellationToken)">
             <summary>
             Writes a sheet to a CSV file
             </summary>
+            <param name="fileName">The path to the CSV file to write</param>
+            <param name="sheet">The sheet to write</param>
+            <param name="delimiter">The delimiter character (default: comma)</param>
+            <param name="encoding">The text encoding (default: UTF-8)</param>
+            <param name="cancellationToken">Token to monitor for cancellation requests</param>
         </member>
         <member name="T:DoenaSoft.CsvHandling.InvalidCsvException">
-            <summary />
+            <summary>
+            Exception thrown when CSV file parsing fails due to invalid format
+            </summary>
         </member>
         <member name="M:DoenaSoft.CsvHandling.InvalidCsvException.#ctor(System.String)">
-            <summary />
+            <summary>
+            Creates a new InvalidCsvException with the specified error message
+            </summary>
+            <param name="message">The error message that explains the reason for the exception</param>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.InvalidCsvException.#ctor(System.String,System.Exception)">
+            <summary>
+            Creates a new InvalidCsvException with the specified error message and inner exception
+            </summary>
+            <param name="message">The error message that explains the reason for the exception</param>
+            <param name="innerException">The exception that is the cause of the current exception</param>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.InvalidCsvException.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>
+            Creates a new InvalidCsvException with diagnostic information
+            </summary>
+            <param name="message">The error message that explains the reason for the exception</param>
+            <param name="lineNumber">The 1-based line number where the error occurred (0 if unknown)</param>
+            <param name="charPosition">The character position within the file where the error occurred (0 if unknown)</param>
+        </member>
+        <member name="M:DoenaSoft.CsvHandling.InvalidCsvException.#ctor(System.String,System.Int32,System.Int32,System.Exception)">
+            <summary>
+            Creates a new InvalidCsvException with diagnostic information and inner exception
+            </summary>
+            <param name="message">The error message that explains the reason for the exception</param>
+            <param name="lineNumber">The 1-based line number where the error occurred (0 if unknown)</param>
+            <param name="charPosition">The character position within the file where the error occurred (0 if unknown)</param>
+            <param name="innerException">The exception that is the cause of the current exception</param>
+        </member>
+        <member name="P:DoenaSoft.CsvHandling.InvalidCsvException.LineNumber">
+            <summary>
+            Gets the 1-based line number where the error occurred, or 0 if unknown
+            </summary>
+        </member>
+        <member name="P:DoenaSoft.CsvHandling.InvalidCsvException.CharPosition">
+            <summary>
+            Gets the character position within the file where the error occurred, or 0 if unknown
+            </summary>
         </member>
     </members>
 </doc>
